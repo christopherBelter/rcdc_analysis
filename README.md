@@ -13,7 +13,7 @@ mcols <- scan("nichd_palette.txt", what = "varchar", sep = "\n")
 source("get_nih_reporter.r")
 ```
 
-Next, we create the RePORTER query we’re going to use as `mq` (shorthand for my query) and then run the `get_nih_reporter()` function to retrieve the data via the API. The API unfortunately expects spending category codes (i.e. “686”) instead of the names of the categories, so you’ll need to do some digging to find the right category code for the category you want to search for.
+Next, we create the RePORTER query we’re going to use as `mq` (shorthand for my query) and then run the `get_nih_reporter()` function to retrieve the data via the API. The API unfortunately expects spending category codes (i.e. “686”) instead of the names of the categories, so you’ll need to do some digging to find the right category code for the category you want to search for. A .csv of the RCDC codes and their corresponding category names that I've been able to geneate from the RePORTER data is available in the [nih_reporter_api]( https://github.com/christopherBelter/nih_reporter_api) repo.
 ```r
 mq <- create_query(FY = as.character(2014:2023), spending_cats = "686", exclude_subprojects = TRUE)
 grants <- get_nih_reporter(mq, "pretermBirth_fy14to23.txt")
