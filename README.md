@@ -63,7 +63,7 @@ p2 + geom_col(fill = mcols[3]) +
   labs(x = "Percent of Funding", y = "Funding Mechanism") + 
   theme_gray(base_size = 18)
 ```
-
+![Bar plot of the percent of funding per funding mechanism](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure6.png)
 
 So far we’ve been looking at awards and funding over the whole time period, but what if we’re interested in looking at changes over time? We can use the same code again and group by the fiscal_year column to summarize the total across all ICs.
 ```r
@@ -98,6 +98,7 @@ p4 + geom_line(size = 4) + scale_color_manual(values = mcols) +
   labs(x = "Fiscal Year", y = "Administered Funding", color = "ICO") + 
   theme_gray(base_size = 18)
 ```
+![Line plot of funding per Institute per fiscal year](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure3.png)
 
 Another thing we can do is add a `filter()` function to this chain to calculate awards and funding for a select set of rows in the data set. Say, for example, that we wanted to look at awards and funding by IC and fiscal year for just research project grants, instead of all grant mechanisms. We simply add a `filter()` specification to the top of the pipe chain and then run all the rest of the code as above. 
 ```r
@@ -115,6 +116,7 @@ p5 + geom_line(size = 4) + scale_color_manual(values = mcols) +
   labs(x = "Fiscal Year", y = "Administered Funding", color = "ICO") + 
   theme_gray(base_size = 18)
 ```
+![Line plot of RPG funding per Institute per fiscal year](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure4.png)
 
 Finally, we can use R’s built-in mapping capabilities, especially its “simple features” object class, to create a color-coded map of funding by US state. First, we create a state summary data frame as we’ve been doing, just grouping by state name. 
 ```r
@@ -144,5 +146,6 @@ Finally, we plot the map using the `geom_sf()` function, set each state’s fill
 p2 <- ggplot(us_base, aes(fill = funding)) + geom_sf(color = "grey75") + coord_sf(xlim = c(-123, -69), ylim = c(25,50)) 
 p2 + scale_fill_viridis_c(labels = scales::label_dollar(suffix = "M")) + labs(fill = "Funding") + theme_void(base_size = 18)
 ```
+![Map of funding by US state](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure5.png)
 
 There are obviously many more things we could do with this data set, but as we’ve seen, most of them involve only minor tweaks to the function chains that we’ve already been using. And as already noted, we could also re-use this code to analyze grant data on other topics, or even by entire ICs, simply by changing the search parameters in line 4.
