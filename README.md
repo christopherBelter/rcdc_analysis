@@ -43,6 +43,7 @@ p1 + geom_col(fill = mcols[3]) +
   labs(x = "Administered Funding", y = "Institute, Center, or Office") + 
   theme_gray(base_size = 18)
 ```
+![Bar plot of funding per Institute](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure1.png)
 
 Next, we use almost the same function chain and plotting code to calculate the awards and funding by funding mechanism and create a bar plot of the results. The only thing that’s different is the column name we pass to the `group_by()` function.
 ```r
@@ -63,6 +64,7 @@ p2 + geom_col(fill = mcols[3]) +
   theme_gray(base_size = 18)
 ```
 
+
 So far we’ve been looking at awards and funding over the whole time period, but what if we’re interested in looking at changes over time? We can use the same code again and group by the fiscal_year column to summarize the total across all ICs.
 ```r
 year_sum <- grants %>% 
@@ -79,6 +81,7 @@ p3 + geom_col(fill = mcols[1]) +
   labs(x = "Fiscal Year", y = "Total Funding") + 
   theme_gray(base_size = 18)
 ```
+![Bar plot of funding per fiscal year](https://github.com/christopherBelter/rcdc_analysis/blob/main/Figures/figure2.png)
 
 Or we can group by both fiscal_year and agency_ic_admin_abbreviation to look at the total per IC per year. The summarization code is almost the same, we just group by two columns instead of just one. And we visualize the results with a line chart instead of a bar chart so we can see trends in funding per year for each IC.
 ```r
