@@ -6,7 +6,7 @@ This repo documents the processes we typically use to analyze NIH funding data f
 In this example, we’ll analyze all NIH awards on the RCDC spending category of “Preterm, Low Birth Weight, and Health of the Newborn” that were funded from 2014-2023. But this code could be re-used for other RCDC categories and other fiscal years by simply changing the search criteria saved to the `mq` object in line 4 and adjusting the plotting parameters (if necessary). 
 
 ## Vignette
-We begin by loading the packages, custom functions, and color palette we’re going to use. Here, we’re using the `tidyverse` package, a set of custom functions for getting data via the NIH RePORTER API (the `get_nih_reporter.r` file, available from the [nih_reporter_api]( https://github.com/christopherBelter/nih_reporter_api) repo), and a custom color palette for NICHD.
+We begin by loading the packages, custom functions, and color palette we’re going to use. Here, we’re using the `tidyverse` package, a set of custom functions for getting data via the NIH RePORTER API (the `get_nih_reporter.r` file, available from the [nih_reporter_api]( https://github.com/christopherBelter/nih_reporter_api) repo), and a custom color palette for NICHD, available in this repo as `nichd_palette.txt`.
 ```r
 library(tidyverse)
 mcols <- scan("nichd_palette.txt", what = "varchar", sep = "\n")
