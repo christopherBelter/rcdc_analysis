@@ -3,7 +3,7 @@
 ## Introduction
 This repo documents the processes we typically use to analyze NIH funding data from RePORTER. It provides the actual R code we use, explanations of what the code is doing at each step, and a little about why we do things this way. We hope this repo also acts as a springboard for performing other analyses of NIH award data from RePORTER, and as a window onto how we might approach similar analyses using data from internal NIH systems. 
 
-In this example, we’ll analyze all NIH awards on the RCDC spending category of “Preterm, Low Birth Weight, and Health of the Newborn” that were funded from 2014-2023. But this code could be re-used for other RCDC categories and other fiscal years by simply changing the search criteria saved to the `mq` object in line 6 and adjusting the plotting parameters (if necessary). 
+In this example, we’ll analyze all NIH awards on the RCDC spending category of “Preterm, Low Birth Weight, and Health of the Newborn” that were funded from 2014-2023. But this code could be re-used for other RCDC categories and other fiscal years by simply changing the search criteria saved to the `mq` object in line 4 and adjusting the plotting parameters (if necessary). 
 
 ## Vignette
 We begin by loading the packages, custom functions, and color palette we’re going to use. Here, we’re using the `tidyverse` package, a set of custom functions for getting data via the NIH RePORTER API (the `get_nih_reporter.r` file, available from the [nih_reporter_api]( https://github.com/christopherBelter/nih_reporter_api) repo), and a custom color palette for NICHD.
@@ -142,4 +142,4 @@ p2 <- ggplot(us_base, aes(fill = funding)) + geom_sf(color = "grey75") + coord_s
 p2 + scale_fill_viridis_c(labels = scales::label_dollar(suffix = "M")) + labs(fill = "Funding") + theme_void(base_size = 18)
 ```
 
-There are obviously many more things we could do with this data set, but as we’ve seen, most of them involve only minor tweaks to the function chains that we’ve already been using. And as already noted, we could also re-use this code to analyze grant data on other topics, or even by entire ICs, simply by changing the search parameters in line 6.
+There are obviously many more things we could do with this data set, but as we’ve seen, most of them involve only minor tweaks to the function chains that we’ve already been using. And as already noted, we could also re-use this code to analyze grant data on other topics, or even by entire ICs, simply by changing the search parameters in line 4.
